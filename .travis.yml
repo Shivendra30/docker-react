@@ -1,9 +1,9 @@
-sudo:required
+sudo: required
 services:
-    - docker
+  - docker
 
 before-install:
-    - docker build -t shivendra30/react-docker -f Dockerfile.dev .
+  - docker build -t shivendra30/react-docker -f Dockerfile.dev .
 
 script:
-    - docker run shivendra30/react-docker npm run test -- --coverage
+  - docker run -e CI=true shivendra30/react-docker npm run test -- --coverage
